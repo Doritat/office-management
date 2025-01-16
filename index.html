@@ -1,257 +1,266 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html dir="rtl" lang="he">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>שאלון מיפוי למנהלות לשכה</title>
+    <title>שאלון מיפוי מנהלות לשכה</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa;
             direction: rtl;
-            text-align: right;
-        }
-        .container {
-            max-width: 600px;
-            margin: 20px auto;
             padding: 20px;
-            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        h1 {
+
+        .header {
             text-align: center;
-            color: #007bb5;
+            margin-bottom: 30px;
         }
-        p {
-            font-weight: bold;
-            color: #007bb5;
+
+        .header img {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 20px;
         }
-        .question {
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #e1e8ed;
+        }
+
+        .section-title {
+            color: #87CEEB;
             margin-bottom: 15px;
+            font-size: 1.2em;
         }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
         label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #007bb5;
+            margin-bottom: 8px;
+            color: #2c3e50;
         }
-        input[type="text"], input[type="date"], select, textarea {
+
+        input[type="text"],
+        input[type="date"],
+        textarea {
             width: 100%;
             padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
             margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            direction: rtl;
         }
-        input[type="checkbox"] {
-            margin-right: 5px;
+
+        .checkbox-group {
+            margin-bottom: 10px;
         }
-        .btn-submit {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background-color: #ff69b4;
-            color: #ffffff;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
             cursor: pointer;
         }
-        .btn-submit:hover {
-            background-color: #ff85c1;
+
+        input[type="checkbox"] {
+            margin-left: 10px;
         }
-        .header-img {
+
+        button[type="submit"] {
+            background-color: #FFB6C1;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
             width: 100%;
-            border-radius: 10px;
-            margin-bottom: 20px;
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #ff9eb5;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>שאלון מיפוי למנהלות לשכה</h1>
-        <img src="/mnt/data/photo-1524758631624-e2822e304c36.jfif" alt="מיפוי למנהלות לשכה" class="header-img">
-        <p>מטרת השאלון:</p>
-        <p>מטרת שאלון זה היא למפות את הצרכים המקצועיים של מנהלות הלשכה בארגון, לרבות תחומי אחריות, רמת הידע הנוכחית, כלים מקצועיים בהם נעשה שימוש, פערי ידע וכלים אותם הן מעוניינות ללמוד. השאלון יסייע לגבש תכנית הכשרה מותאמת ולשפר את היעילות המקצועית.</p>
-
-        <div class="question">
-            <label>שם מלא:</label>
-            <input type="text" name="full_name" required>
+        <div class="header">
+            <img src="/api/placeholder/200/150" alt="מיפוי מנהלות לשכה">
+            <h1>שאלון מיפוי למנהלות לשכה</h1>
+            <p>מטרת שאלון זה היא למפות את הצרכים המקצועיים של מנהלות הלשכה בארגון, לרבות תחומי אחריות, רמת הידע הנוכחית, כלים מקצועיים בהם נעשה שימוש, פערי ידע וכלים אותם הן מעוניינות ללמוד.</p>
         </div>
 
-        <div class="question">
-            <label>מחלקה/אגף:</label>
-            <input type="text" name="department" required>
-        </div>
+        <form id="surveyForm">
+            <div class="section">
+                <h2 class="section-title">פרטי מנהלת הלשכה</h2>
+                <div class="form-group">
+                    <label for="fullName">שם מלא:</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="department">מחלקה/אגף:</label>
+                    <input type="text" id="department" name="department" required>
+                </div>
+                <div class="form-group">
+                    <label for="startDate">תאריך תחילת עבודה בארגון:</label>
+                    <input type="date" id="startDate" name="startDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="currentRole">תפקיד נוכחי:</label>
+                    <input type="text" id="currentRole" name="currentRole" required>
+                </div>
+                <div class="form-group">
+                    <label for="experience">ותק בתפקיד (שנים וחודשים):</label>
+                    <input type="text" id="experience" name="experience" required>
+                </div>
+            </div>
 
-        <div class="question">
-            <label>תאריך תחילת עבודה בארגון:</label>
-            <input type="date" name="start_date" required>
-        </div>
+            <div class="section">
+                <h2 class="section-title">תחומי אחריות</h2>
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="responsibilities" value="calendar">
+                        ניהול יומן ולו"ז
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="responsibilities" value="communication">
+                        ניהול תקשורת עם לקוחות וספקים
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="responsibilities" value="presentations">
+                        הכנת מצגות ודוחות
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="responsibilities" value="meetings">
+                        ניהול פורומים וישיבות
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="responsibilities" value="projects">
+                        ניהול פרויקטים מיוחדים
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="otherResponsibilities">אחר (נא לפרט):</label>
+                    <input type="text" id="otherResponsibilities" name="otherResponsibilities">
+                </div>
+            </div>
 
-        <div class="question">
-            <label>תפקיד נוכחי:</label>
-            <input type="text" name="position" required>
-        </div>
+            <div class="section">
+                <h2 class="section-title">הכשרות מקצועיות</h2>
+                <div class="form-group">
+                    <label>האם השתתפת בהכשרות מקצועיות בארגון?</label>
+                    <label class="checkbox-label">
+                        <input type="radio" name="training" value="yes" required>
+                        כן
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="radio" name="training" value="no" required>
+                        לא
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="pastTraining">אם כן, באילו הכשרות השתתפת בעבר?</label>
+                    <textarea id="pastTraining" name="pastTraining" rows="4"></textarea>
+                </div>
+            </div>
 
-        <div class="question">
-            <label>ותק בתפקיד (שנים וחודשים):</label>
-            <input type="text" name="experience" required>
-        </div>
+            <div class="section">
+                <h2 class="section-title">כלים מקצועיים</h2>
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="tools" value="outlook">
+                        Microsoft Outlook
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="tools" value="excel">
+                        Microsoft Excel
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="tools" value="powerpoint">
+                        Microsoft PowerPoint
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="crmSystem">מערכות CRM (צייני שם המערכת):</label>
+                    <input type="text" id="crmSystem" name="crmSystem">
+                </div>
+                <div class="form-group">
+                    <label for="taskTools">כלים לניהול משימות (צייני שם הכלי):</label>
+                    <input type="text" id="taskTools" name="taskTools">
+                </div>
+            </div>
 
-        <div class="question">
-            <label>אילו תחומי אחריות עיקריים יש לך בתפקידך כמנהלת לשכה?</label>
-            <div>
-                <input type="checkbox" name="responsibilities" value="ניהול יומן ולו״ז">
-                ניהול יומן ולו"ז
+            <div class="section">
+                <h2 class="section-title">צרכים ולמידה עתידית</h2>
+                <div class="form-group">
+                    <label for="improvement">מה לדעתך יוכל לשפר את עבודתך כמנהלת לשכה?</label>
+                    <textarea id="improvement" name="improvement" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="suggestedTraining">האם יש הכשרות נוספות שיכולות לעזור לך בעבודתך?</label>
+                    <textarea id="suggestedTraining" name="suggestedTraining" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="suggestions">האם יש לך הצעות לשיפור תהליכי העבודה במשרד?</label>
+                    <textarea id="suggestions" name="suggestions" rows="4"></textarea>
+                </div>
             </div>
-            <div>
-                <input type="checkbox" name="responsibilities" value="ניהול תקשורת עם לקוחות וספקים">
-                ניהול תקשורת עם לקוחות וספקים
-            </div>
-            <div>
-                <input type="checkbox" name="responsibilities" value="הכנת מצגות ודוחות">
-                הכנת מצגות ודוחות
-            </div>
-            <div>
-                <input type="checkbox" name="responsibilities" value="ניהול פורומים וישיבות">
-                ניהול פורומים וישיבות
-            </div>
-            <div>
-                <input type="checkbox" name="responsibilities" value="ניהול פרויקטים מיוחדים">
-                ניהול פרויקטים מיוחדים
-            </div>
-            <div>
-                <input type="checkbox" name="responsibilities" value="אחר">
-                אחר (נא לפרט)
-            </div>
-            <textarea name="other_responsibilities" rows="2" placeholder="פרט אחר עניין"></textarea>
-        </div>
 
-        <div class="question">
-            <label>האם השתתפת בהכשרות מקצועיות בארגון?</label>
-            <div>
-                <input type="checkbox" name="training" value="כן">
-                כן
+            <div class="section">
+                <h2 class="section-title">אישור מנהל ישיר</h2>
+                <div class="form-group">
+                    <label for="managerName">שם המנהל:</label>
+                    <input type="text" id="managerName" name="managerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signature">חתימה:</label>
+                    <input type="text" id="signature" name="signature" required>
+                </div>
+                <div class="form-group">
+                    <label for="date">תאריך:</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
             </div>
-            <div>
-                <input type="checkbox" name="training" value="לא">
-                לא
-            </div>
-        </div>
 
-        <div class="question">
-            <label>אם כן, באילו הכשרות השתתפת בעבר?</label>
-            <textarea name="training_details" rows="4"></textarea>
-        </div>
-
-        <div class="question">
-            <label>אילו מהכלים הבאים את משתמשת בעבודתך השוטפת?</label>
-            <div>
-                <input type="checkbox" name="tools" value="Microsoft Outlook">
-                Microsoft Outlook
-            </div>
-            <div>
-                <input type="checkbox" name="tools" value="Microsoft Excel">
-                Microsoft Excel
-            </div>
-            <div>
-                <input type="checkbox" name="tools" value="Microsoft PowerPoint">
-                Microsoft PowerPoint
-            </div>
-            <div>
-                <input type="checkbox" name="tools" value="מערכת CRM">
-                מערכת CRM (צייני שם המערכת)
-            </div>
-            <div>
-                <input type="checkbox" name="tools" value="כלים לניהול משימות">
-                כלים לניהול משימות (צייני שם הכלי)
-            </div>
-            <div>
-                <input type="checkbox" name="tools" value="כלים לניהול ישיבות">
-                כלים לניהול ישיבות (צייני שם הכלי)
-            </div>
-            <div>
-                <input type="checkbox" name="tools" value="אחר">
-                אחר (נא לפרט)
-            </div>
-            <textarea name="other_tools" rows="2" placeholder="פרט כלים נוספים שאת מעוניינת ללמוד"></textarea>
-        </div>
-
-        <div class="question">
-            <label>האם יש כלים נוספים שחשוב לך ללמוד או לשפר את הידע בהם?</label>
-            <div>
-                <input type="checkbox" name="tools_to_learn" value="ניהול יומנים מורכבים">
-                ניהול יומנים מורכבים
-            </div>
-            <div>
-                <input type="checkbox" name="tools_to_learn" value="הכנת דוחות ב-Excel">
-                הכנת דוחות ב-Excel
-            </div>
-            <div>
-                <input type="checkbox" name="tools_to_learn" value="הכנת מצגות מתקדמות ב-PowerPoint">
-                הכנת מצגות מתקדמות ב-PowerPoint
-            </div>
-            <div>
-                <input type="checkbox" name="tools_to_learn" value="ניהול ותיעוד פרוטוקולים בישיבות">
-                ניהול ותיעוד פרוטוקולים בישיבות
-            </div>
-            <div>
-                <input type="checkbox" name="tools_to_learn" value="אחר">
-                אחר (נא לפרט)
-            </div>
-            <textarea name="other_tools_to_learn" rows="2" placeholder="פרט כלים נוספים"></textarea>
-        </div>
-
-        <div class="question">
-            <label>אילו פורומים או ישיבות את מנהלת/משתתפת בהם באופן קבוע?</label>
-            <textarea name="forums" rows="4"></textarea>
-        </div>
-
-        <div class="question">
-            <label>האם את אחראית על כתיבת פרוטוקולים בישיבות אלו?</label>
-            <div>
-                <input type="checkbox" name="protocols" value="כן">
-                כן
-            </div>
-            <div>
-                <input type="checkbox" name="protocols" value="לא">
-                לא
-            </div>
-        </div>
-
-        <div class="question">
-            <label>מה לדעתך יוכל לשפר את עבודתך כמנהלת לשכה?</label>
-            <textarea name="improvements" rows="4"></textarea>
-        </div>
-
-        <div class="question">
-            <label>האם יש הכשרות נוספות שיכולות לעזור לך בעבודתך?</label>
-            <textarea name="additional_training" rows="4"></textarea>
-        </div>
-
-        <div class="question">
-            <label>האם יש לך הצעות לשיפור תהליכי העבודה במשרד?</label>
-            <textarea name="process_improvements" rows="4"></textarea>
-        </div>
-
-        <div class="question">
-            <label>אישור מנהל ישיר</label>
-            <label>שם המנהל:</label>
-            <input type="text" name="manager_name" required>
-
-            <label>חתימה:</label>
-            <input type="text" name="signature" required>
-
-            <label>תאריך:</label>
-            <input type="date" name="date" required>
-        </div>
-
-        <p>תודה רבה על מילוי השאלון! השאלון נועד לעזור לנו להתאים עבורך את הכלים וההכשרות הנדרשות כדי לסייע לך להצליח בתפקידך בצורה מיטבית.</p>
-
-        <button type="submit" class="btn-submit">שלח</button>
+            <button type="submit">שליחת השאלון</button>
+        </form>
     </div>
 </body>
 </html>
+
